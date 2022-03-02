@@ -11,17 +11,17 @@ Naturally, there is no "one-tool-fits-all", so Keycloak too sometimes needs to b
 
 <!--more-->
 
-Being a complex project, Keycloak can be intimidating at first glance, but once we learn how the general architecture and workflows look like we can precisely implement providers to fine-tune Keycloak's behaviour.
+Being a complex project, Keycloak can be intimidating at first glance, but once we learn how the general architecture and workflows look like we can easily implement providers to fine-tune Keycloak's behaviour.
 
-Let us take a look into what Keycloak does is when a user is authenticated, and see how we can implement such a provider:
+Let us take a look into what Keycloak does when a user is authenticated, and see how we can implement such a provider:
 
 ![Keycloak Auth](/images/keycloak-auth.png)
 
-We can see multiple points marked with "SPI" (service provider interface). These are all the points where we can provide additional or alternative implementations, and alter the way Keycloak works.
-Please note, some API's are private, which means they can change in any way during Keycloak updates. So one has to be careful where and when functionality is added.
+We can see multiple points marked with "SPI" (service provider interface). These are all points where we can provide additional or alternative implementations, and alter the way Keycloak works.
+Please note, some SPI's are private, which means they can change in any way during Keycloak updates. So be careful where and when you add functionality.
 
 In our example we want to implement a new token mapper, to have some claims mapped in a specific way.
-To do this, we setup a small Java project in our favorite Editor, throw in some gradle build scripts (maven works too, of course!) and define our entry point and a marker for Keycloak to load our provider:
+To do this, we setup a small Java project in our favorite editor, throw in some Gradle build scripts (Maven works too, of course!) and define our entry point and a marker for Keycloak to load our provider:
 
 ![Keycloak Code](/images/keycloak-code.png)
 
